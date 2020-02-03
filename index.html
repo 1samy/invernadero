@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CONTROL DE TEMPERATURA Y HUMEDAD</title>
+</head>
+<h1 style="background-color:#45B39D ;"><center>SISTEMA DE CONTROL DE UN INVERNADERO</center></h1>
+<body background="https://www.solofondos.com/wp-content/uploads/2017/08/e_hd169_9-minimalistic.jpg">
+<p style="color:#000000 ;"><b>Integrantes:</b></p>
+<p style="color:#000000 ;"><b>Menaly Luzuriaga </b></p>
+<p style="color:#000000 ;"><b>Samy Mestanza </b></p>
+<p style="color:#000000 ;"><b>Jefferson Pino</b></p>
+<p style="color:#000000 ;"><b>Cynthia Pilco </b></p>
+</script>
+<p></p>
+<button type="button" onclick="location.assign(/LED1_OFF');">P INV.TOMATE</button>
+<button type="button" onclick="location.assign('/LED1_OFF');">A INV.TOMATE</button>
+<button type="button" onclick="location.assign(/LED1_OFF');">V INV.TOMATE</button>
+<button type="button" onclick="location.assign('/LED1_OFF');">C INV.TOMATE</button>
+
+<h2><center>Datos actuales humedad y temperatura</center></h2>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">temperatura</button>
+<p id="demo"></p>
+
+<button type="button"
+onclick="document.getElementById('demo1').innerHTML = Date()">humedad</button>
+<p id="demo1"></p>
+<h3><center> graficas temperatura</center></h3>
+<canvas id="myChart1"width="150" height="20"style="border:1px solid #000000;"></canvas>
+<script src="chart.js"></script>
+<script>
+
+var ctx1 = document.getElementById('myChart1').getContext('2d');
+var chart = new Chart(ctx1, {
+    type: 'line',
+	    data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        datasets: [{
+            label: 'temperatura',
+            borderColor: 'black',
+			data: [1, 1, 1, 1, 1, 1, 1,1,1,1,1,1]
+        }		
+		]},
+    options: {}
+});
+
+</script>
+
+<h3><center> graficas humedad</center></h3>
+<canvas id="myChart"width="150" height="20"style="border:1px solid #000000;"></canvas>
+<script src="chart.js"></script>
+<script>
+
+var ctx1 = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx1, {
+    type: 'line',
+	    data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        datasets: [{
+            label: 'temperatura',
+            borderColor: 'black',
+			data: [1, 1, 1, 1, 1, 1, 1,1,1,1,1,1]
+        }		
+		]},
+    options: {}
+});
+
+</script>
+</body>
+</html>
