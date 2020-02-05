@@ -3,8 +3,7 @@
 <head>
 <title>CONTROL DE TEMPERATURA Y HUMEDAD</title>
 <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
- <script src="https://www.gstatic.com/5.5.7/firebase-firestore.js"></script>
-</head>
+ </head>
 <h1 style="background-color:#45B39D ;"><center>SISTEMA DE CONTROL DE UN INVERNADERO</center></h1>
 <body background="https://www.solofondos.com/wp-content/uploads/2017/08/e_hd169_9-minimalistic.jpg">
 <p style="color:#000000 ;"><b>Integrantes:</b></p>
@@ -12,17 +11,21 @@
 <p style="color:#000000 ;"><b>Samy Mestanza </b></p>
 <p style="color:#000000 ;"><b>Jefferson Pino</b></p>
 <p style="color:#000000 ;"><b>Cynthia Pilco </b></p>
-</script>
-<p></p>
-<button type="button" onclick="location.assign(/LED1_OFF');">P INV.TOMATE</button>
-<button type="button" onclick="location.assign('/LED1_OFF');">A INV.TOMATE</button>
-<button type="button" onclick="location.assign(/LED1_OFF');">V INV.TOMATE</button>
-<button type="button" onclick="location.assign('/LED1_OFF');">C INV.TOMATE</button>
 
+<p></p>
+<h1 style="background-color:#45B39D ;"><center>invernadero uno</center></h1>	
+<button type="button" onclick="puerta();">ABRIR PUERTA </button>
+<button type="button" onclick="aspersor();">ACCIONAR ASPERSOR</button>
+<button type="button" onclick="ventilador();">ACCIONAR VENTILADOR</button>
+<button type="button" onclick="calefactor();">ACCIONAR CALEFACTOR</button>
+<p></p>
+<button type="button" onclick="cpuerta();">CERRAR PUERTA </button>
+<button type="button" onclick="aaspersor();">APAGAR ASPERSOR</button>
+<button type="button" onclick="aventilador();">APAGAR VENTILADOR</button>
+<button type="button" onclick="acalefactor();">APAGAR CALEFACTOR</button>
 <h2><center>Datos actuales humedad y temperatura</center></h2>
 <button onclick="myFunction()">Tempertura y humedad</button>
 <p id="Datos"></p>
- 
 <script>
 function myFunction() {
   const preSensores = document.getElementById('Datos');
@@ -32,16 +35,66 @@ preSensores.innerText =JSON.stringify(snap.val(), null, 3)
 	});
 }
 </script>
- <script> const config = {
+<script>
+const F= "Botones"
+</script>
+<script>
+function puerta(){
+  writeUserData(F,'A')
+}
+</script>
+<script>
+function aspersor(){
+  writeUserData(F,'B')
+}
+</script>
+<script>
+function ventilador(){
+  writeUserData(F,'C')
+}
+</script>
+<script>
+function acalefactor(){
+  writeUserData(F,'D')
+}
+</script>
+<script>
+function cpuerta(){
+  writeUserData(F,'E')
+}
+</script>
+<script>
+function aaspersor(){
+  writeUserData(F,'F')
+}
+</script>
+<script>
+function aventilador(){
+  writeUserData(F,'G')
+}
+</script>
+<script>
+function acalefactor(){
+  writeUserData(F,'H')
+}
+</script>
+<script>
+function writeUserData(userId, name) {
+  firebase.database().ref(userId).set({
+    Accion: name,
+  });
+}
+</script>
+<script>
+const config = {
   apiKey: "AIzaSyDLhexv8NekHmaMXVskTLl6okeFlXjGnWE",
   authDomain: "invernadero-4af1e.firebaseapp.com",
   databaseURL: "https://invernadero-4af1e.firebaseio.com",
   storageBucket: "invernadero-4af1e.appspot.com",  
   };
  firebase.initializeApp(config);
-	</script>
-
- <h3><center> graficas temperatura</center></h3>
+</script>
+<h3><center> graficas temperatura</center></h3>
 <canvas id="myChart1"width="1500" height="200"style="border:1px solid #000000;"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -81,6 +134,5 @@ var chart = new Chart(ctx1, {
 });
 
 </script>
- 
 </body>
 </html>
