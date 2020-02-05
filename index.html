@@ -32,7 +32,14 @@ preSensores.innerText =JSON.stringify(snap.val(), null, 3)
 	});
 }
 </script>
- <script src="prueba.js"></script>
+ <script> const config = {
+  apiKey: "AIzaSyDLhexv8NekHmaMXVskTLl6okeFlXjGnWE",
+  authDomain: "invernadero-4af1e.firebaseapp.com",
+  databaseURL: "https://invernadero-4af1e.firebaseio.com",
+  storageBucket: "invernadero-4af1e.appspot.com",  
+  };
+ firebase.initializeApp(config);
+	</script>
 
  <h3><center> graficas temperatura</center></h3>
 <canvas id="myChart1"width="1500" height="200"style="border:1px solid #000000;"></canvas>
