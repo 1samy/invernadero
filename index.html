@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CONTROL DE LUCES PANECILLO</title>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+ </head>
+<h1 style="background-color:#45B39D ;"><center>SISTEMA DE CONTROL DE ENECENDIDO Y APAGADO DE LUCES PANECILLO</center></h1>
+<body background="https://www.solofondos.com/wp-content/uploads/2017/08/e_hd169_9-minimalistic.jpg">
+<p style="color:#000000 ;"><b>Integrantes:</b></p>
+<p style="color:#000000 ;"><b>Andres Faican </b></p>
+<p style="color:#000000 ;"><b>Samy Mestanza </b></p>
+<p style="color:#000000 ;"><b>Cinthya Pilco </b></p>
+
+<p></p>
+<h1 style="background-color:#45B39D ;"><center>PLANTA BAJA</center></h1>	
+
+<button type="button" onclick="luztecho();">S1 TECHO </button>
+<button type="button" onclick="luzpasillo();">S2 PASILLO</button>
+<button type="button" onclick="luzcuadros();">S3 CUADROS</button>
+<button type="button" onclick="luzlocales;">S4 LOCALES</button><p></p>
+
+<h1 style="background-color:#45B39D ;"><center>PRIMER PISO</center></h1>
+
+<button type="button" onclick="luztecho1();">S5 TECHO </button>
+<button type="button" onclick="luzpasillocristal();">S6 PASILLO</button>
+<button type="button" onclick="vitrinas();">S7 VITRINAS</button>
+
+<h1 style="background-color:#45B39D ;"><center>SEGUNDO PISO</center></h1>
+<button type="button" onclick="luztecho2();">S8 TECHO </button>
+<button type="button" onclick="luzcuadros2();">S9 CUADROS</button>
+
+<h1 style="background-color:#45B39D ;"><center>TERCER PISO</center></h1>
+<button type="button" onclick="luztecho3();">S10 TECHO </button>
+<button type="button" onclick="luzcuadros3();">S11 CUADROS</button>
+
+<h1 style="background-color:#45B39D ;"><center>ESTATUA </center></h1>
+<button type="button" onclick="apliques();">S12 LAMPARA APLIQUES </button>
+<button type="button" onclick="reflectores();">S13 REFLECTORES</button>
+
+<h2><center>Datos actuales humedad y temperatura</center></h2>
+<button onclick="myFunction()">Tempertura y humedad</button>
+<p id="Datos"></p>
+<script>
+function myFunction() {
+  const preSensores = document.getElementById('Datos');
+ const dbref=firebase.database().ref().child('Sensores');
+dbref.on('value', snap => {
+preSensores.innerText =JSON.stringify(snap.val(), null, 3)
+	});
+}
+</script>
+<script>
+const F= "Botones"
+</script>
+<script>
+function puerta(){
+  writeUserData(F,'A')
+}
+</script>
+<script>
+function aspersor(){
+  writeUserData(F,'B')
+}
+</script>
+<script>
+function ventilador(){
+  writeUserData(F,'C')
+}
+</script>
+<script>
+function calefactor(){
+  writeUserData(F,'D')
+}
+</script>
+<script>
+function cpuerta(){
+  writeUserData(F,'E')
+}
+</script>
+<script>
+function aaspersor(){
+  writeUserData(F,'F')
+}
+</script>
+<script>
+function aventilador(){
+  writeUserData(F,'G')
+}
+</script>
+<script>
+function acalefactor(){
+  writeUserData(F,'H')
+}
+</script>
+<script>
+function writeUserData(userId, name) {
+  firebase.database().ref(userId).set({
+    Accion: name,
+  });
+}
+</script>
+<script>
+const config = {
+  apiKey: "AIzaSyDLhexv8NekHmaMXVskTLl6okeFlXjGnWE",
+  authDomain: "invernadero-4af1e.firebaseapp.com",
+  databaseURL: "https://invernadero-4af1e.firebaseio.com",
+  storageBucket: "invernadero-4af1e.appspot.com",  
+  };
+ firebase.initializeApp(config);
+</script>
+<h3><center> graficas temperatura</center></h3>
+<canvas id="myChart1"width="1500" height="200"style="border:1px solid #000000;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var ctx1 = document.getElementById('myChart1').getContext('2d');
+var chart = new Chart(ctx1, {
+    type: 'line',
+	    data: {
+        labels: ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
+        datasets: [{
+            label: 'temperatura',
+            borderColor: 'black',
+			data: [11.5,11.4,11.3,11,10.5,10.4,10,10.1,11.2,12.2,14,15.7,16.6,17.6,18,17.95,17.65,16,15,14,13,12.5,12.3,12]
+        }		
+		]},
+    options: {}
+});
+
+</script>
+
+<h3><center> graficas humedad</center></h3>
+<canvas id="myChart2"width="1500" height="200"style="border:1px solid #000000;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+var ctx1 = document.getElementById('myChart2').getContext('2d');
+var chart = new Chart(ctx1, {
+    type: 'line',
+	    data: {
+        labels: ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
+        datasets: [{
+            label: 'humedad',
+            borderColor: 'black',
+			data: [83,85,86,86,87,87,87,88,79,71,62,59,56,53,52,52,52,56,59,63,66,68,70,72]
+        }		
+		]},
+    options: {}
+});
+
+</script>
+</body>
+</html>
